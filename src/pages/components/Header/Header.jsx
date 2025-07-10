@@ -13,10 +13,10 @@ const Header = () => {
         </div>
         {/* Navigation Links */}
         <nav className="flex flex-wrap justify-left gap-6 sm:gap-8 md:gap-4 lg:gap-4 flex-1 sm:ml-8 md:ml-6 lg:ml-6 mb-2 sm:mb-0 md:mb-0 lg:mb-0">
-          <a href="/" className="font-medium text-black hover:text-[#ecdcbf] text-base md:text-sm lg:text-sm">Home</a>
-          <a href="/login" className="font-medium text-black hover:text-[#ecdcbf] text-base md:text-sm lg:text-sm">Products</a>
-          <a href="/signup" className="font-medium text-black hover:text-[#ecdcbf] text-base md:text-sm lg:text-sm">About us</a>
-          <a href="/signup" className="font-medium text-black hover:text-[#ecdcbf] text-base md:text-sm lg:text-sm">Blog</a>
+          <a href="/" className="font-medium text-black hover:text-[#b48a4a] text-base md:text-sm lg:text-sm">Home</a>
+          <a href="/login" className="font-medium text-black hover:text-[#b48a4a] text-base md:text-sm lg:text-sm">Products</a>
+          <a href="/signup" className="font-medium text-black hover:text-[#b48a4a] text-base md:text-sm lg:text-sm">About us</a>
+          <a href="/signup" className="font-medium text-black hover:text-[#b48a4a] text-base md:text-sm lg:text-sm">Blog</a>
         </nav>
         {/* Search and Icons */}
         <div className="flex items-center gap-2 sm:gap-4 md:gap-2 lg:gap-2 w-full sm:w-auto md:w-auto lg:w-auto justify-center sm:justify-end md:justify-end lg:justify-end">
