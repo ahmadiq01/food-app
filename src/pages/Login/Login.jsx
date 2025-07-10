@@ -21,6 +21,11 @@ const Login = () => {
                 <button type="submit" className="bg-[#e3262b] text-white border-none rounded-[20px] py-3 font-medium text-[16px] cursor-pointer">Login <span className="ml-2">&rarr;</span></button>
               </form>
             </div>
+             <div className="flex items-center my-4">
+              <hr className="flex-grow border-t border-[#e0d6c3]" />
+              <span className="mx-2 text-[#726c60] text-[14px]">Or</span>
+              <hr className="flex-grow border-t border-[#e0d6c3]" />
+            </div>
             <button className="w-full bg-[#ecdcbf] text-[#e3262b] border-none rounded-[20px] py-3 font-medium text-[16px] mb-4 flex items-center justify-center gap-3 cursor-pointer">
               <FontAwesomeIcon icon={faMeta} size="lg" /> Sign in with Meta
             </button>
