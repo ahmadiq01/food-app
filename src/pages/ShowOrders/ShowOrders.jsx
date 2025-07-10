@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header/Header";
-import grapeImg from "../../assets/logo 1.svg"; // Placeholder image, replace with actual product images if available
-import checkoutIcon from "../../assets/checkout-icon.png"; // Placeholder image, replace with actual product images if available
+import grapeImg from "../../assets/logo 1.svg";
+import checkoutIcon from "../../assets/checkout-icon.png";
 
-const cartItems = [
+const initialCartItems = [
   {
     id: 1,
     name: "Sweet Green Seedless Grapes 1.5-2 lb",
@@ -38,18 +38,34 @@ const cartItems = [
   },
 ];
 
-const itemsTotal = cartItems.reduce((sum, item) => sum + item.price, 0);
-const deliveryFee = 200;
-const subtotal = itemsTotal + deliveryFee;
-
 const ShowOrders = () => {
+  const [cartItems, setCartItems] = useState(initialCartItems);
+
+  const handleQuantityChange = (id, delta) => {
+    setCartItems((items) =>
+      items.map((item) =>
+        item.id === id
+          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
+          : item
+      )
+    );
+  };
+
+  const handleRemove = (id) => {
+    setCartItems((items) => items.filter((item) => item.id !== id));
+  };
+
+  const itemsTotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const deliveryFee = 200;
+  const subtotal = itemsTotal + deliveryFee;
+
   return (
     <div className="min-h-screen bg-[#f8f2de] font-[Poppins]">
       <Header />
       <div className="flex justify-center items-start py-10">
         <div className="flex flex-col md:flex-row gap-12 w-full max-w-[1280px] px-4">
           {/* Cart Items */}
-          <div className="bg-white rounded-[24px] shadow border border-[#e0d6c3] flex-1 p-6 min-w-[350px] max-w-[816px]">
+          <div className="order-1 md:order-none bg-white rounded-[24px] shadow border border-[#e0d6c3] flex-1 p-6 min-w-[350px] max-w-[816px]">
             <div className="text-[15px] font-medium mb-4">Items Name</div>
             <div className="flex flex-col gap-4">
               {cartItems.map((item) => (
@@ -66,19 +82,22 @@ const ShowOrders = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="flex items-center bg-[#f3f3f3] rounded-full px-1 py-1 w-[96px] h-[40px]">
-                      <button className="w-8 h-8 rounded-full bg-white border border-[#e0d6c3] flex items-center justify-center text-lg text-[#212121]">-</button>
+                      <button onClick={() => handleQuantityChange(item.id, -1)} className="w-8 h-8 rounded-full bg-white border border-[#e0d6c3] flex items-center justify-center text-lg text-[#212121] cursor-pointer">-</button>
                       <span className="flex-1 text-center text-[18px] font-medium">{item.quantity}</span>
-                      <button className="w-8 h-8 rounded-full bg-[#212121] flex items-center justify-center text-lg text-white">+</button>
+                      <button onClick={() => handleQuantityChange(item.id, 1)} className="w-8 h-8 rounded-full bg-[#212121] flex items-center justify-center text-lg text-white cursor-pointer">+</button>
                     </div>
                   </div>
-                  <button className="text-[#e3262b] text-[13px] ml-2">Remove</button>
-                  <div className="font-medium text-[17px] min-w-[100px] text-center">{item.price.toFixed(2)} PKR</div>
+                  <button onClick={() => handleRemove(item.id)} className="text-[#e3262b] text-[13px] ml-2 cursor-pointer">Remove</button>
+                  <div className="font-medium text-[17px] min-w-[100px] text-center">{(item.price * item.quantity).toFixed(2)} PKR</div>
                 </div>
               ))}
+              {cartItems.length === 0 && (
+                <div className="text-center text-[#726c60] py-8">No items in cart.</div>
+              )}
             </div>
           </div>
-          {/* Order Summary */}
-          <div className="bg-[#ecdcbf] rounded-[24px] shadow border border-[#e0d6c3] w-full h-[50%] max-w-[416px] p-8 flex flex-col gap-4">
+          {/* Order Summary - now on the right */}
+          <div className="order-2 md:order-none bg-[#ecdcbf] rounded-[24px] shadow border border-[#e0d6c3] w-full h-[50%] max-w-[416px] p-8 flex flex-col gap-4 mt-8 md:mt-0">
             <div className="font-semibold text-[18px] mb-2">Order Summary</div>
             <div className="flex flex-col gap-2 ml-[12px] text-[15px]">
               <div className="flex justify-between">
