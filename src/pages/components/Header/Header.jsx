@@ -31,7 +31,7 @@ const Header = ({
         return {
           containerBg: bg_color,
           innerBg: "bg-[#e31e27]",
-          border: "border-[#e31e27]",
+          border: "border-[#a31d1d]",
           textColor: "text-white",
           hoverColor: "hover:text-white/80",
           searchBorder: "border-white/30",
