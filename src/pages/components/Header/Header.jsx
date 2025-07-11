@@ -2,7 +2,6 @@
 import React from "react";
 import Logo1 from "../../../assets/logo 1.svg";
 import HomeLogo from "../../../assets/home-logo.svg";
-import GroupSvg from "../../../assets/Group.svg";
 
 const Header = ({ 
   variant = "default", 
@@ -62,22 +61,16 @@ const Header = ({
   const styles = getStyles();
 
   return (
-    <div className={`${styles.containerBg} px-0 sm:px-[135px] md:px-[30px] lg:px-[60px] py-[30px] border-b-[1.5px] ${styles.border} relative`}>
-      {/* Group SVG for home variant - positioned in top right corner */}
-      {variant === "home" && (
-        <div className="absolute top-0 right-0 z-0">
-          <img src={GroupSvg} alt="Decorative" className="w-auto h-auto" />
-        </div>
-      )}
+    <div className={`${styles.containerBg} px-2 sm:px-[135px] md:px-[30px] lg:px-[60px] py-[30px] border-b-[1.5px] ${styles.border} relative`}>
       
-      <div className={`flex flex-col sm:flex-row md:flex-row lg:flex-row items-center justify-between ${styles.innerBg} rounded-[20px] px-[10px] sm:px-[10px] md:px-[16px] lg:px-[20px] py-3 sm:py-0 md:py-0 lg:py-0 ${styles.shadow} h-auto sm:h-[67px] md:h-[60px] lg:h-[60px] relative z-10`}>
+      <div className={`flex flex-col sm:flex-row md:flex-row lg:flex-row items-center justify-between ${styles.innerBg} rounded-[20px] px-2 sm:px-[10px] md:px-[16px] lg:px-[20px] py-0 sm:py-0 md:py-0 lg:py-0 ${styles.shadow} h-auto sm:h-[67px]  md:h-[60px] lg:h-[60px] relative z-10 w-full sm:w-[98%] mx-auto`} style={{ width: '96%' }}>
         {/* Logo */}
         <div className="flex-shrink-0 mb-2 sm:mb-0 md:mb-0 lg:mb-0">
           <a href="/" className="flex items-center">
             <img 
               src={variant === "home" ? HomeLogo : Logo1} 
               alt="Logo" 
-              className="h-12 w-auto md:h-10 lg:h-10" 
+              className="h-6 w-auto md:h-10 lg:h-10" 
             />
           </a>
         </div>

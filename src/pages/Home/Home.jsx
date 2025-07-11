@@ -1,10 +1,15 @@
 // Home.js
 import React from "react";
 import Header from "../components/Header/Header";
+import GroupSvg from "../../assets/Group.svg";
 
 const Home = () => {
   return (
     <>
+      {/* Decorative Group SVG moved from Header */}
+      <div className="absolute top-0 right-0 z-0">
+        <img src={GroupSvg} alt="Decorative" className="w-auto h-auto" />
+      </div>
       <Header 
         variant="home" 
         bg_color="bg-transparent"
@@ -26,7 +31,7 @@ const Home = () => {
         alignment="items-center justify-between"
         spacing="gap-4 sm:gap-6"         // Spacing between elements
       />
-      <div>
+      <div className="bg-[#a31d1d]">
         {/* Your other content */}
       </div>
     </>
