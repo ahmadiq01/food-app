@@ -23,11 +23,6 @@ import { FaFacebookMessenger } from 'react-icons/fa'; // From Font Awesome
 const HeaderSection = () => {
   return (
     <div>
-      {/* Top right Group image */}
-      <div className="fixed top-0 right-0 p-2 z-50">
-        <img src={Group} alt="Sub Heading" className="w-[101px] h-[101px]" />
-      </div>
-
       {/* Header Section */}
       {/* make sure this div should not let the other divs come */}
       <div className="flex justify-center mt-8">

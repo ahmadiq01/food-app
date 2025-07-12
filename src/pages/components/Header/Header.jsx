@@ -2,6 +2,7 @@
 import React from "react";
 import Logo1 from "../../../assets/logo 1.svg";
 import HomeLogo from "../../../assets/home-logo.svg";
+import Group from '../../../assets/Group.svg';
 import { useNavigate } from 'react-router-dom';
 
 const Header = ({ 
@@ -47,6 +48,10 @@ const Header = ({
 
   return (
     <div className={`${styles.containerBg} px-2 sm:px-[135px] md:px-[30px] lg:px-[60px] py-[30px] border-b-[1.5px] ${styles.border} relative`}>
+      {/* Show Group SVG only on home */}
+      {variant === 'home' && (
+        <img src={Group} alt="Group Decorative" className="absolute top-0 right-0 p-2 w-[101px] h-[101px] z-10" />
+      )}
       
       <div className={`flex flex-col sm:flex-row md:flex-row lg:flex-row items-center justify-between ${styles.innerBg} rounded-[20px] px-2 sm:px-[10px] md:px-[16px] lg:px-[20px] py-0 sm:py-0 md:py-0 lg:py-0 ${styles.shadow} h-auto sm:h-[67px]  md:h-[60px] lg:h-[60px] relative z-10 w-full sm:w-[98%] mx-auto`} style={{ width: '96%' }}>
         {/* Logo */}
