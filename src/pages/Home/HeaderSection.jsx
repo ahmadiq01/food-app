@@ -104,7 +104,7 @@ const HeaderSection = () => {
               alt="Arrow"
               style={{
                 top: "300px",
-                left: "190px",
+                left: "140px",
                 // background  : 'white',
                 position: "absolute",
               }}
@@ -152,9 +152,9 @@ const HeaderSection = () => {
       {/* bottles Container */}
 
       <div className="flex items-center justify-center w-full mt-18">
-        <div className="bg-blue-200 justify-between flex flex-row rounded-xl relative w-[1200px]">
+        <div className="bg-white flex flex-row rounded-xl relative w-[80%] px-8 py-6 gap-6">
           {/* Bottle 1 */}
-          <div className="flex flex-row ml-[200px] bg-pink-600 rounded-xl p-6 w-1/8 min-w-[320px] relative">
+          <div className="flex flex-row  mr-[0px] rounded-xl p-6 flex-1 min-w-[320px] relative">
             {/* Shadow Overlay */}
             <img
               src={RedShadow}
@@ -165,31 +165,31 @@ const HeaderSection = () => {
             <img
               src={RB}
               alt="Royal Drink Red"
-              className="h-32 w-auto relative z-10"
+              className="h-60 w-auto relative z-10"
             />
-            <div className="flex flex-col justify-center flex-1 relative z-10">
-              <div className="font-bold text-2xl text-[#1A1A1A] mb-1">
+            <div className="flex flex-col justify-center flex-1 relative z-10  ml-[40px] w-[80%] bg-white/90 rounded-xl py-2 px-4">
+              <div className="font-black text-2xl tracking-wider text-[#1A1A1A] mb-1">
                 Royal Drink
               </div>
-              <div className="text-sm text-[#1A1A1A] mb-2">
+              <div className="text-sm w-[62%] text-[#1A1A1A] mb-2">
                 Now that there is the Tec-9, a crappy spray gun from South
                 Miami.
               </div>
-              <div className="mb-2">
-                <span className="line-through text-gray-400 mr-2">
+              <div className="mb-2 mr-[20px]">
+                <span className="line-through text-[#909090] mr-2">
                   1500 PKR
                 </span>
-                <span className="font-bold text-[#a31d1d] text-lg">
+                <span className="font-bold text-black text-lg">
                   999 PKR
                 </span>
               </div>
-              <button className="bg-[#a31d1d] text-white rounded-full px-8 py-2 font-semibold text-base">
+              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base">
                 Add to Cart
               </button>
             </div>
           </div>
           {/* Bottle 2 */}
-          <div className="flex flex-row mr-[50px] rounded-xl p-6 w-1/8 min-w-[320px] relative">
+          <div className="flex flex-row rounded-xl  ml-[30px] p-6 flex-1 min-w-[320px] relative">
             {/* Shadow Overlay */}
             <img
               src={GreenShadow}
@@ -200,32 +200,32 @@ const HeaderSection = () => {
             <img
               src={GB}
               alt="Royal Drink Green"
-              className="h-32 w-auto relative z-10"
+              className="h-60 w-auto relative z-10"
             />
-            <div className="flex flex-col justify-center flex-1 relative z-10">
-              <div className="font-bold text-2xl text-[#1A1A1A] mb-1">
+            <div className="flex flex-col justify-center flex-1 relative z-10  ml-[40px] w-[80%] bg-white/90 rounded-xl py-2 px-4">
+              <div className="font-black text-2xl tracking-wider text-[#1A1A1A] mb-1">
                 Royal Drink
               </div>
-              <div className="text-sm text-[#1A1A1A] mb-2">
+              <div className="text-sm w-[62%] text-[#1A1A1A] mb-2">
                 Now that there is the Tec-9, a crappy spray gun from South
                 Miami.
               </div>
-              <div className="mb-2">
-                <span className="line-through text-gray-400 mr-2">
+              <div className="mb-2 mr-[20px]">
+                <span className="line-through text-[#909090] mr-2">
                   1500 PKR
                 </span>
-                <span className="font-bold text-[#a31d1d] text-lg">
+                <span className="font-bold text-black text-lg">
                   999 PKR
                 </span>
               </div>
-              <button className="bg-[#a31d1d] text-white rounded-full px-8 py-2 font-semibold text-base">
+              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base">
                 Add to Cart
               </button>
             </div>
           </div>
 
           {/* Bottle 3 */}
-          <div className="flex flex-row mr-[120px] rounded-xl p-6 w-1/8 min-w-[320px] relative">
+          <div className="flex flex-row rounded-xl mr-[-50px]  p-6 flex-1 min-w-[320px] relative">
             {/* Shadow Overlay */}
             <img
               src={YellowShadow}
@@ -236,25 +236,25 @@ const HeaderSection = () => {
             <img
               src={YB}
               alt="Royal Drink Yellow"
-              className="h-32 w-auto relative z-10"
+              className="h-60 w-auto relative z-10"
             />
-            <div className="flex flex-col justify-center flex-1 relative z-10">
-              <div className="font-bold text-2xl text-[#1A1A1A] mb-1">
+            <div className="flex flex-col justify-center flex-1 relative z-10  ml-[40px] w-[80%] bg-white/90 rounded-xl py-2 px-4">
+              <div className="font-black text-2xl tracking-wider text-[#1A1A1A] mb-1">
                 Royal Drink
               </div>
-              <div className="text-sm text-[#1A1A1A] mb-2">
+              <div className="text-sm w-[62%] text-[#1A1A1A] mb-2">
                 Now that there is the Tec-9, a crappy spray gun from South
                 Miami.
               </div>
-              <div className="mb-2">
-                <span className="line-through text-gray-400 mr-2">
+              <div className="mb-2 mr-[10px]">
+                <span className="line-through text-[#909090] mr-2">
                   1500 PKR
                 </span>
-                <span className="font-bold text-[#a31d1d] text-lg">
+                <span className="font-bold text-black text-lg">
                   999 PKR
                 </span>
               </div>
-              <button className="bg-[#a31d1d] text-white rounded-full px-8 py-2 font-semibold text-base shadow">
+              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base shadow">
                 Add to Cart
               </button>
             </div>
