@@ -3,8 +3,42 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMeta } from '@fortawesome/free-brands-svg-icons'; 
 import Header from "../components/Header/Header";
 import { FaGoogle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axiosInstance from '../../api/axios';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const confirmPassword = e.target.confirmPassword.value;
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+    try {
+      const res = await axiosInstance.post('/users/signup', { email, password, confirmPassword });
+      const data = res.data;
+      if (res.status === 200 && data.token) {
+        localStorage.setItem('token', data.token);
+        toast.success('Signup successful!');
+        navigate('/showorders');
+      } else {
+        setError(data.message || 'Signup failed');
+        toast.error(data.message || 'Signup failed');
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || 'Network error');
+      toast.error(err.response?.data?.message || 'Network error');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#f8f2de] font-[Poppins]">
       <Header />
@@ -13,18 +47,19 @@ const Signup = () => {
           <div className="ml-0 sm:ml-16 w-full max-w-[418px] px-4">
             <h1 className="text-[28px] font-medium mb-8 text-center sm:text-left">Signup</h1>
             <div className="bg-[#ecdcbf] rounded-[24px] border border-white w-full p-6 sm:p-8 shadow mb-7">
-              <form className="flex flex-col gap-4">
+              <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <label className="text-[14px] mb-1">Email</label>
-                <input id="email" type="email" placeholder="Enter your email" className="p-3 rounded-[8px] border-none bg-[#f8f2de] mb-3 placeholder:text-[#726c60] focus:outline-none" />
+                <input id="email" name="email" type="email" placeholder="Enter your email" className="p-3 rounded-[8px] border-none bg-[#f8f2de] mb-3 placeholder:text-[#726c60] focus:outline-none" />
                 <label className="text-[14px] mb-1">Password</label>
-                <input type="password" placeholder="Password" className="p-3 rounded-[8px] border-none bg-[#f8f2de] mb-3 placeholder:text-[#726c60] focus:outline-none" />
+                <input name="password" type="password" placeholder="Password" className="p-3 rounded-[8px] border-none bg-[#f8f2de] mb-3 placeholder:text-[#726c60] focus:outline-none" />
                 <label className="text-[14px] mb-1">Confirm Password</label>
-                <input type="password" placeholder="Confirm Password" className="p-3 rounded-[8px] border-none bg-[#f8f2de] mb-3 placeholder:text-[#726c60] focus:outline-none" />
+                <input name="confirmPassword" type="password" placeholder="Confirm Password" className="p-3 rounded-[8px] border-none bg-[#f8f2de] mb-3 placeholder:text-[#726c60] focus:outline-none" />
                 <div className="flex justify-end mb-2">
                   <a href="#" className="text-[#e3262b] text-[12px] no-underline">Forgot password?</a>
                 </div>
                 <button type="submit" className="bg-[#e3262b] text-white border-none rounded-[20px] py-3 font-medium text-[16px] cursor-pointer">Create Account <span className="ml-2">&rarr;</span></button>
               </form>
+              {error && <div className="text-red-600 text-sm mt-2">{error}</div>}
             </div>
             <div className="flex items-center my-4">
               <hr className="flex-grow border-t border-[#e0d6c3]" />
