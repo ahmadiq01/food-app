@@ -14,7 +14,7 @@ import Footer from "../components/Footer/Footer";
 const Home = () => {
   return (
     <>
-      <div className="bg-[#a1a31d] ">
+      <div className="bg-[#a31d1d]">
         <Header 
           variant="home"
           bg_color="bg-[#a31d1d]"

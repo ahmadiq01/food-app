@@ -2,28 +2,13 @@
 import React from "react";
 import Logo1 from "../../../assets/logo 1.svg";
 import HomeLogo from "../../../assets/home-logo.svg";
+import { useNavigate } from 'react-router-dom';
 
 const Header = ({ 
   variant = "default", 
   bg_color,
-  // Width control props
-  containerWidth = "w-full",
-  maxWidth = "max-w-[1280px]", // Set to 1280px for normal screens
-  innerWidth = "w-full",
-  logoWidth = "w-auto",
-  searchWidth = "max-w-[180px] sm:max-w-none md:max-w-[120px] lg:max-w-[120px]",
-  // Responsive width controls
-  mobileWidth = "w-full",
-  tabletWidth = "w-full",
-  desktopWidth = "w-full",
-  // Padding/margin controls
-  horizontalPadding = "px-0 sm:px-[135px] md:px-[30px] lg:px-[60px]",
-  verticalPadding = "py-[30px]",
-  // Layout controls
-  layout = "flex-col sm:flex-row md:flex-row lg:flex-row",
-  alignment = "items-center justify-between",
-  spacing = "gap-6 sm:gap-8 md:gap-4 lg:gap-4"
 }) => {
+  const navigate = useNavigate();
   // Define styles based on variant
   const getStyles = () => {
     switch (variant) {
@@ -107,7 +92,11 @@ const Header = ({
           </form>
           
           {/* User Icon */}
-          <button className={`p-2 rounded-full border ${styles.buttonBorder} ${styles.buttonHover} ${styles.buttonBg} md:p-1.5 lg:p-1.5 transition-all duration-200`}>
+          <button
+            type="button"
+            onClick={() => navigate('/login')}
+            className={`p-2 rounded-full border ${styles.buttonBorder} ${styles.buttonHover} ${styles.buttonBg} md:p-1.5 lg:p-1.5 transition-all duration-200 cursor-pointer`}
+          >
             <svg className={`w-6 h-6 ${styles.textColor} md:w-5 md:h-5 lg:w-5 lg:h-5`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="12" cy="8" r="4"/>
               <path d="M4 20c0-4 8-4 8-4s8 0 8 4"/>
@@ -115,7 +104,11 @@ const Header = ({
           </button>
           
           {/* Cart Icon */}
-          <button className={`p-2 rounded-full border ${styles.buttonBorder} ${styles.buttonHover} ${styles.buttonBg} md:p-1.5 lg:p-1.5 transition-all duration-200`}>
+          <button
+            type="button"
+            onClick={() => navigate('/orders')}
+            className={`p-2 rounded-full border ${styles.buttonBorder} ${styles.buttonHover} ${styles.buttonBg} md:p-1.5 lg:p-1.5 transition-all duration-200 cursor-pointer`}
+          >
             <svg className={`w-6 h-6 ${styles.textColor} md:w-5 md:h-5 lg:w-5 lg:h-5`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="9" cy="21" r="1"/>
               <circle cx="20" cy="21" r="1"/>

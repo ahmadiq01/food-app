@@ -15,8 +15,7 @@ import YellowShadow from "../../assets/YellowShadow.svg";
 
 const HeaderSection = () => {
   return (
-    
-    <div className="display:none">
+    <div>
       {/* Top right Group image */}
       <div className="fixed top-0 right-0 p-2 z-50">
         <img src={Group} alt="Sub Heading" className="w-[101px] h-[101px]" />
@@ -28,7 +27,7 @@ const HeaderSection = () => {
         <img src={SubHeadingSvg} alt="Sub Heading" className="h-10 w-auto" />
       </div>
 
-      <div className="flex flex-col md:flex-row justify-between items-center md:items-start mt-8 w-full px-4 md:px-39 gap-4 md:gap-0">
+      <div className="flex flex-col md:flex-row border-4 justify-between items-center md:items-start mt-8 w-full px-4 md:px-39 gap-4 md:gap-0">
         {/* Div 1 for the video and button */}
         <div className="flex flex-col items-center gap-4 mr-0 md:mr-2 w-full md:w-[288px]">
           <img
@@ -91,7 +90,7 @@ const HeaderSection = () => {
               className="rounded-xl object-cover w-full h-full"
             />
             <div
-              className="absolute bottom-22 right-4 bg-[#c03536] text-white font-[Poppins] rounded-full px-15 py-0 text-sm shadow border border-white relative"
+              className="absolute bottom-22 right-4 bg-[#c03536] text-white font-[Poppins] rounded-full px-15 py-0 text-sm shadow border border-white "
               style={{ overflow: "visible" }}
             >
               {/* Top-left thick white border */}
@@ -241,16 +240,25 @@ const HeaderSection = () => {
       </div>
       {/* Rating Section Ends Here*/}
       {/* Header Sections Ends Here  */}
-      
+
       {/* bottles Container */}
 
       <div className="flex justify-center mt-12">
-        <div className="bg-white rounded-2xl flex flex-row gap-8 px-8 py-8 items-stretch w-full max-w-7xl">
+        <div className="bg-pink-600 rounded-2xl flex flex-row gap-8 px-8 py-8 items-stretch w-full max-w-7xl">
           {/* Bottle 1 */}
           <div className="flex flex-row items-center bg-white rounded-xl p-6 w-1/3 min-w-[320px] gap-6 relative">
             {/* Shadow Overlay */}
-            <img src={RedShadow} alt="Red Shadow" className="absolute -left-8 top-1/2 -translate-y-1/2 w-40 h-40 z-0" style={{ pointerEvents: 'none' }} />
-            <img src={RB} alt="Royal Drink Red" className="h-32 w-auto relative z-10" />
+            <img
+              src={RedShadow}
+              alt="Red Shadow"
+              className="absolute -left-8 top-1/2 -translate-y-1/2 w-40 h-40 z-0"
+              style={{ pointerEvents: "none" }}
+            />
+            <img
+              src={RB}
+              alt="Royal Drink Red"
+              className="h-32 w-auto relative z-10"
+            />
             <div className="flex flex-col justify-center flex-1 relative z-10">
               <div className="font-bold text-2xl text-[#1A1A1A] mb-1">
                 Royal Drink
@@ -275,8 +283,17 @@ const HeaderSection = () => {
           {/* Bottle 2 */}
           <div className="flex flex-row items-center bg-white rounded-xl p-6 w-1/3 min-w-[320px] gap-6 relative">
             {/* Shadow Overlay */}
-            <img src={GreenShadow} alt="Green Shadow" className="absolute -left-8 top-1/2 -translate-y-1/2 w-40 h-40 z-0" style={{ pointerEvents: 'none' }} />
-            <img src={GB} alt="Royal Drink Green" className="h-32 w-auto relative z-10" />
+            <img
+              src={GreenShadow}
+              alt="Green Shadow"
+              className="absolute -left-8 top-1/2 -translate-y-1/2 w-40 h-40 z-0"
+              style={{ pointerEvents: "none" }}
+            />
+            <img
+              src={GB}
+              alt="Royal Drink Green"
+              className="h-32 w-auto relative z-10"
+            />
             <div className="flex flex-col justify-center flex-1 relative z-10">
               <div className="font-bold text-2xl text-[#1A1A1A] mb-1">
                 Royal Drink
@@ -302,8 +319,17 @@ const HeaderSection = () => {
           {/* Bottle 3 */}
           <div className="flex flex-row items-center bg-white rounded-xl p-6 w-1/3 min-w-[320px] gap-6 relative">
             {/* Shadow Overlay */}
-            <img src={YellowShadow} alt="Yellow Shadow" className="absolute -left-8 top-1/2 -translate-y-1/2 w-40 h-40 z-0" style={{ pointerEvents: 'none' }} />
-            <img src={YB} alt="Royal Drink Yellow" className="h-32 w-auto relative z-10" />
+            <img
+              src={YellowShadow}
+              alt="Yellow Shadow"
+              className="absolute -left-8 top-1/2 -translate-y-1/2 w-40 h-40 z-0"
+              style={{ pointerEvents: "none" }}
+            />
+            <img
+              src={YB}
+              alt="Royal Drink Yellow"
+              className="h-32 w-auto relative z-10"
+            />
             <div className="flex flex-col justify-center flex-1 relative z-10">
               <div className="font-bold text-2xl text-[#1A1A1A] mb-1">
                 Royal Drink
@@ -327,9 +353,8 @@ const HeaderSection = () => {
           </div>
         </div>
       </div>
-      
+
       {/* bottle section ends here */}
-    
     </div>
   );
 };
