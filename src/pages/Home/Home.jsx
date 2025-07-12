@@ -14,11 +14,7 @@ import Footer from "../components/Footer/Footer";
 const Home = () => {
   return (
     <>
-      <div className="bg-[#a31d1d]">
-        {/* Decorative Group SVG moved from Header */}
-        <div className="absolute top-0 right-0 z-0">
-          <img src={GroupSvg} alt="Decorative" className="w-auto h-auto" />
-        </div>
+      <div className="bg-[#a1a31d] ">
         <Header 
           variant="home"
           bg_color="bg-[#a31d1d]"

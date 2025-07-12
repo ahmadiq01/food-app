@@ -47,7 +47,7 @@ const Header = ({
           innerBg: "bg-[#ecdcbf]",
           border: "border-[#ecdcbf]",
           textColor: "text-black",
-          hoverColor: "hover:text-[#ecdcbf]",
+          hoverColor: "hover:text-[#c4a268]",
           searchBorder: "border-[#C3B79F]",
           buttonBg: "bg-[#ecdcbf]",
           buttonBorder: "border-[#C3B79F]",
