@@ -1,4 +1,6 @@
 import React from "react";
+import CircularArrow from "../../assets/Circular Arrow.svg";
+
 
 const KnowMoreFaqs = () => {
   return (
