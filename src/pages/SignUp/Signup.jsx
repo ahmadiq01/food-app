@@ -15,34 +15,63 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+  
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
+  
+    console.log("🔐 Signup Attempt:", { email, password, confirmPassword });
+  
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
+      console.warn("⚠️ Passwords do not match");
       return;
     }
+  
     try {
-      const res = await axiosInstance.post('/users/signup', { email, password, confirmPassword });
+      const res = await axiosInstance.post("/users/signup", {
+        email,
+        password,
+        confirmPassword,
+      });
+  
       const data = res.data;
-      console.log('Signup API response:', res);
-      if (res.status === 200 && data.token) {
-        localStorage.setItem('token', data.token);
-        console.log('Token set in localStorage:', localStorage.getItem('token'));
-        toast.success('Signup successful!');
-        console.log('Navigating to /orders');
-        navigate('/orders');
+  
+      console.log("✅ Server Response:", res.status, data);
+  
+      if ((res.status === 200 || res.status === 201) && data.token) {
+        // Save JWT to localStorage
+        localStorage.setItem("token", data.token);
+  
+        // Debug logs
+        console.log("🔑 JWT Token received:", data.token);
+        console.log("📦 Token stored in localStorage:", localStorage.getItem("token"));
+        console.log(
+          "🧪 localStorage Match:",
+          localStorage.getItem("token") === data.token ? "✅ SUCCESS" : "❌ FAILED"
+        );
+  
+        toast.success("Signup successful!");
+  
+        // Redirect using full reload
+        setTimeout(() => {
+          console.log("🚀 Redirecting to /orders...");
+          window.location.href = "/orders";
+        }, 500);
       } else {
-        setError(data.message || 'Signup failed');
-        console.log('Signup failed, response data:', data);
-        toast.error(data.message || 'Signup failed');
+        const msg = data.message || "Signup failed";
+        setError(msg);
+        console.error("❌ Signup Failed:", msg);
+        toast.error(msg);
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Network error');
-      console.log('Signup error:', err);
-      toast.error(err.response?.data?.message || 'Network error');
+      const msg = err.response?.data?.message || "Network error";
+      setError(msg);
+      console.error("💥 Error during signup:", msg, err);
+      toast.error(msg);
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-[#f8f2de] font-[Poppins]">
