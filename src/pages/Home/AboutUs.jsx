@@ -30,7 +30,7 @@ const AboutUs = () => {
           <p className="text-[#B7AFA3] text-[18px] mb-8">From seed to shelf, we’re transparent, ethical, and deeply passionate about flavor that nourishes.</p>
           <button className="bg-[#E31E27] text-white rounded-full px-8 py-3 text-[20px] font-semibold w-fit">Checkout Organic Products</button>
           {/* Rleaf image at right end */}
-          <img src={Leaf} alt="Leaf" className="absolute right-[-400px] bg-red-300 top-1/2 -translate-y-1/2 w-[180px] h-[180px] opacity-80" />
+          <img src={Leaf} alt="Leaf" className="absolute right-[-400px] top-1/2 -translate-y-1/2 w-[180px] h-[180px] opacity-80" />
         </div>
       </div>
     </div>
