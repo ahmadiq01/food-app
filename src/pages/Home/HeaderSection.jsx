@@ -14,6 +14,7 @@ import GreenShadow from "../../assets/GreenShadow.svg";
 import YellowShadow from "../../assets/YellowShadow.svg";
 import Men from "../../assets/Male Memojis.svg";
 import Phone from "../../assets/Phone.svg";
+import LeftOrange from "../../assets/LeftOrange.svg";
 import Female from "../../assets/Female.svg";
 import { SocialIcon } from 'react-social-icons';
 import { FaFacebookMessenger } from 'react-icons/fa'; // From Font Awesome
@@ -150,7 +151,8 @@ const HeaderSection = () => {
       {/* Header Sections Ends Here  */}
 
       {/* bottles Container */}
-
+      {/* Left Orange Decorative SVG */}
+      <img src={LeftOrange} alt="Left Orange" className="absolute left-0 bottom-0 w-[180px] h-auto z-0" style={{ pointerEvents: 'none' }} />
       <div className="flex items-center justify-center w-full mt-18">
         <div className="bg-white flex flex-row rounded-xl relative w-[80%] px-8 py-6 gap-6">
           {/* Bottle 1 */}
