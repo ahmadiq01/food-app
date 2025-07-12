@@ -4,10 +4,20 @@ import VideoSvg from "../../assets/Video.svg";
 import CheckoutIcon from "../../assets/checkout-icon.svg";
 import CenterProduct from "../../assets/Center Product box.svg";
 import Profile from "../../assets/Ellipse 28.svg";
+import Group from "../../assets/Group.svg";
 
 const HeaderSection = () => {
   return (
-    <div>
+    <div className="relative">
+      {/* Top right Group image */}
+      <div className="fixed top-0 right-0 p-2 z-50">
+        <img
+          src={Group}
+          alt="Sub Heading"
+          className="w-[151px] h-[151px]"
+        />
+      </div>
+
       {/* Organic Image */}
       {/* make sure this div should not let the other divs come */}
       <div className="flex justify-center mt-8">
@@ -18,7 +28,8 @@ const HeaderSection = () => {
         />
       </div>
 
-      <div className="flex flex-row justify-center items-start gap-12 mt-8">
+      <div className="flex flex-row justify-center items-start gap-64 mt-8 ">
+        
         {/* Div 1 for the video and button */}
         <div className="flex flex-col items-center gap-4">
           <img
