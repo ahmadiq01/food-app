@@ -25,16 +25,21 @@ const Signup = () => {
     try {
       const res = await axiosInstance.post('/users/signup', { email, password, confirmPassword });
       const data = res.data;
+      console.log('Signup API response:', res);
       if (res.status === 200 && data.token) {
         localStorage.setItem('token', data.token);
+        console.log('Token set in localStorage:', localStorage.getItem('token'));
         toast.success('Signup successful!');
-        navigate('/showorders');
+        console.log('Navigating to /orders');
+        navigate('/orders');
       } else {
         setError(data.message || 'Signup failed');
+        console.log('Signup failed, response data:', data);
         toast.error(data.message || 'Signup failed');
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Network error');
+      console.log('Signup error:', err);
       toast.error(err.response?.data?.message || 'Network error');
     }
   };
