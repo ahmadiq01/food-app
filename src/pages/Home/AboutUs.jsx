@@ -13,8 +13,9 @@ const AboutUs = () => {
         {/* Left: Image Section */}
         <div className="relative flex-shrink-0 w-[497px] h-[746px] rounded-[48px] overflow-hidden mr-12">
           <img src={model} alt="Model" className="w-full h-full object-cover rounded-[48px]" />
-          <img src={Tag} alt="Organic Tag" className="absolute top-8 left-1/2 -translate-x-1/2 w-[160px] h-[160px]" />
         </div>
+        {/* Organic Tag floating to the right of the model image */}
+        <img src={Tag} alt="Organic Tag" className="absolute mr-[210px] top-[345px] -translate-y-1/2 w-[216.42px] h-[216.42px] z-10" />
         {/* Right: Text Section */}
         <div className="relative flex flex-col max-w-xl">
           <span className="text-[#E31E27] font-[Sofia] text-[18px] tracking-[0.16em] mb-2">About Us</span>
