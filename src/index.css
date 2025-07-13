@@ -3,3 +3,15 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
+
+@font-face {
+  font-family: 'Sofia';
+  src: url('./assets/Sofia-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-sofia {
+  font-family: 'Sofia', cursive;
+}

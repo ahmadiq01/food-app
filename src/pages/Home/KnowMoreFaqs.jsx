@@ -12,14 +12,14 @@ const KnowMoreFaqs = () => {
       {/* Background SVG */}
       <img
         src={CircularArrow}
-        className="w-full h-auto absolute top-0 left-0 z-0"
+        className="w-[2000px]  rotate-[-14.47px] deg h-auto absolute mb-[500px] left-1 z-0"
         alt="Background Curve"
         style={{ pointerEvents: 'none' }}
       />
       {/* Overlayed Content */}
       <div className="relative z-20 flex flex-col items-center w-full">
-        <h2 className="text-white font-[Sofia] text-4xl md:text-5xl font-bold mb-8 mt-8 text-center drop-shadow-lg">Why Our Foods</h2>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 w-full max-w-5xl mb-12 px-4">
+        <h2 className="text-white font-[Sofia] text-4xl md:text-5xl mb-24 mt-8 text-center drop-shadow-lg">Why Our Foods</h2>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 w-full max-w-5xl mb-60 px-4">
           {/* Card 1 */}
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 w-full md:w-1/3 min-h-[220px] text-white shadow-lg border border-white/20 flex flex-col items-start gap-2">
             <div className="flex flex-row items-center gap-4 w-full">
@@ -32,7 +32,7 @@ const KnowMoreFaqs = () => {
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 w-full md:w-1/3 min-h-[220px] text-white shadow-lg border border-white/20 flex flex-col items-start gap-2">
             <div className="flex flex-row items-center gap-4 w-full">
               <img src={Card2} alt="Healthy Treats" className="w-12 h-12 flex-shrink-0" />
-              <div className="font-bold text-lg mb-1 text-left font-[Sofia]">Healthy Treats for Foodies</div>
+              <div className="font-bold text-lg mb-1 text-left font-[Poppins]">Healthy Treats for Foodies</div>
             </div>
             <div className="text-sm text-left w-full">From juicy syrups to creamy ice creams, our foods are crafted to satisfy cravings without harming your health.</div>
           </div>
@@ -40,7 +40,7 @@ const KnowMoreFaqs = () => {
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 w-full md:w-1/3 min-h-[220px] text-white shadow-lg border border-white/20 flex flex-col items-start gap-2">
             <div className="flex flex-row items-center gap-4 w-full">
               <img src={Card3} alt="Tradition Meets Taste" className="w-12 h-12 flex-shrink-0" />
-              <div className="font-bold text-lg mb-1 text-left font-[Sofia]">Tradition Meets Taste</div>
+              <div className="font-bold text-lg mb-1 text-left font-[Poppins]">Tradition Meets Taste</div>
             </div>
             <div className="text-sm text-left w-full">Desi sweets, fresh juices, and fruit chutneys made with love—just like homemade, but better.</div>
           </div>
