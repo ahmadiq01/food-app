@@ -20,15 +20,15 @@ const Connect = () => {
         <p className="text-white text-base md:text-lg text-center mb-8 max-w-2xl">
           Subscribe to receive exclusive updates, tips, and promotions straight to your inbox. Join our community for expert advice and resources to support your care journey.
         </p>
-        <div className="flex flex-row items-center bg-white rounded-full px-2 py-2 w-[519px] h-[70px] shadow-md">
+        <div className="flex flex-row items-center bg-white rounded-full px-2 py-2 w-[519px] h-[60px] shadow-md">
           <input
             type="email"
             placeholder="Enter your email address here"
-            className="rounded-full px-6 py-3 w-[350px] bg-white text-gray-700 focus:outline-none border-none shadow-none"
+            className="rounded-full px-6 py-2 w-[350px] bg-white text-gray-700 focus:outline-none border-none shadow-none"
           />
           <button
             type="submit"
-            className="bg-[#B71C1C] text-white rounded-full px-8 py-3 text-lg font-semibold ml-2"
+            className="bg-[#B71C1C] text-white rounded-full px-8 py-2 text-lg font-semibold ml-2"
           >
             Subscribe
           </button>
