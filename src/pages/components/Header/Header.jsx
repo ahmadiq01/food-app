@@ -3,7 +3,12 @@ import React from "react";
 import Logo1 from "../../../assets/logo 1.svg";
 import HomeLogo from "../../../assets/home-logo.svg";
 import Group from '../../../assets/Group.svg';
+import Cart from '../../../assets/Cart.svg';
+import HomeCart from '../../../assets/HomeCart.svg';
+import User from '../../../assets/User.svg';
+import HomeUser from '../../../assets/HomeUser.svg';
 import { useNavigate } from 'react-router-dom';
+import { width } from "@fortawesome/free-brands-svg-icons/fa42Group";
 
 const Header = ({ 
   variant = "default", 
@@ -84,7 +89,7 @@ const Header = ({
         {/* Search and Icons */}
         <div className="flex items-center gap-2 sm:gap-4 md:gap-2 lg:gap-2 w-full sm:w-auto md:w-auto lg:w-auto justify-center sm:justify-end md:justify-end lg:justify-end">
           {/* Search Bar */}
-          <form className={`flex items-center bg-transparent border ${styles.searchBorder} rounded-full px-3 py-1 w-full max-w-[180px] sm:max-w-none md:max-w-[120px] lg:max-w-[120px]`}>
+          <form className={`flex items-center bg-transparent border ${styles.searchBorder} rounded-full px-4 py-2 w-full max-w-[220px] sm:max-w-none md:max-w-[160px] lg:max-w-[160px]`}>
             <svg className={`w-5 h-5 ${styles.textColor} mr-2 md:w-4 md:h-4 lg:w-4 lg:h-4`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="8"/>
               <line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -92,33 +97,45 @@ const Header = ({
             <input 
               type="text" 
               placeholder="Search Product" 
-              className={`bg-transparent outline-none text-sm md:text-xs lg:text-xs w-full ${styles.placeholderColor} ${variant === "home" ? "text-white" : ""}`} 
+              className={`bg-transparent outline-none text-base md:text-sm lg:text-sm w-full ${styles.placeholderColor} ${variant === "home" ? "text-white" : ""}`} 
             />
           </form>
+
           
-          {/* User Icon */}
-          <button
-            type="button"
-            onClick={() => navigate('/login')}
-            className={`p-2 rounded-full border ${styles.buttonBorder} ${styles.buttonHover} ${styles.buttonBg} md:p-1.5 lg:p-1.5 transition-all duration-200 cursor-pointer`}
-          >
-            <svg className={`w-6 h-6 ${styles.textColor} md:w-5 md:h-5 lg:w-5 lg:h-5`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M4 20c0-4 8-4 8-4s8 0 8 4"/>
-            </svg>
+          <button type="button" onClick={() => navigate('/login')}>
+            {variant === 'home' ? (
+              <svg
+                className={`w-10 h-10 p-1 rounded-full `}
+                style={{ border: '1px solid #e94b52' }}
+                fill="none"
+                stroke="white"
+                strokeWidth="1.2"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 20c0-4 8-4 8-4s8 0 8 4" />
+              </svg>
+            ) : (
+              <img
+                src={User}
+                alt="User"
+                className="w-12 h-20 p-1 rounded-full"
+              />
+            )}
           </button>
+
+
           
           {/* Cart Icon */}
           <button
             type="button"
             onClick={() => navigate('/orders')}
-            className={`p-2 rounded-full border ${styles.buttonBorder} ${styles.buttonHover} ${styles.buttonBg} md:p-1.5 lg:p-1.5 transition-all duration-200 cursor-pointer`}
           >
-            <svg className={`w-6 h-6 ${styles.textColor} md:w-5 md:h-5 lg:w-5 lg:h-5`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <circle cx="9" cy="21" r="1"/>
-              <circle cx="20" cy="21" r="1"/>
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-            </svg>
+            {variant === 'home' ? (
+              <img src={HomeCart} alt="Cart" className="w-[40px] h-[40px]" />
+            ) : (
+              <img src={Cart} alt="Cart" className="w-[40px] h-[40px]" />
+            )}
           </button>
         </div>
       </div>
