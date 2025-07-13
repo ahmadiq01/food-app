@@ -6,9 +6,9 @@ import SubHeadingSvg from "../../assets/Sub Heading.svg";
 import VideoSvg from "../../assets/Video.svg";
 import HeaderSection from "./HeaderSection";
 import AboutUs from "./AboutUs";
-import Customers from "./Customers";
-import KnowMoreFaqs from "./KnowMoreFaqs";
 import Connect from "./Connect";
+import OurFoods from "./OurFoods";
+import OurCustomers from "./OurCustomers";
 import Footer from "../components/Footer/Footer";
 
 const Home = () => {
@@ -35,8 +35,8 @@ const Home = () => {
         {/* header sections for home within the home  */}
         <HeaderSection />
         <AboutUs />
-        <Customers />
-        <KnowMoreFaqs />
+        <OurFoods />
+        <OurCustomers />
         <Connect />
         <Footer />
       </div>

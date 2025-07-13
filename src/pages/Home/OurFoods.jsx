@@ -6,7 +6,7 @@ import Card2 from "../../assets/Card2.svg";
 import Card3 from "../../assets/Card3.svg";
 
 
-const KnowMoreFaqs = () => {
+const OurFoods = () => {
   return (
     <div className="relative w-full min-h-[700px] flex flex-col items-center justify-center overflow-hidden py-16">
       {/* Background SVG */}
@@ -58,4 +58,4 @@ const KnowMoreFaqs = () => {
   );
 };
 
-export default KnowMoreFaqs; 
+export default OurFoods; 
