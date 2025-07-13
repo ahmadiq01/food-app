@@ -11,7 +11,7 @@ const OurFoods = () => {
       {/* Background SVG */}
       <img
         src={CircularArrow}
-        className="w-[2100px]  rotate-[-8.47deg] h-auto absolute mb-[500px] left-1 z-0"
+        className="w-[1900px]  rotate-[-8.47deg] h-[1822px] absolute mb-[500px] mr-[120px] z-0"
         alt="Background Curve"
         style={{ pointerEvents: 'none' }}
       />
@@ -23,7 +23,7 @@ const OurFoods = () => {
         </h2>
         
         {/* Cards Container - Fixed to single row */}
-        <div className="flex flex-row justify-center items-stretch gap-6 w-full max-w-[1200px] mb-16 px-4">
+        <div className="flex flex-row justify-center items-stretch gap-18 w-full max-w-[1200px] mb-16 px-4">
           {/* Card 1 */}
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 w-[350px] h-[182px] text-white shadow-lg border border-white/20 flex flex-col items-start gap-2">
             <div className="flex flex-row items-center gap-4 w-full">

@@ -3,7 +3,7 @@ import CurveBG from "../../assets/Background Light Color.svg";
 import avatar1 from "../../assets/Male Memojis.svg";
 import avatar2 from "../../assets/female.svg";
 import avatar3 from "../../assets/model.svg";
-import star from "../../assets/checkout-icon.svg"; // Use a star icon or any icon you prefer
+import star from "../../assets/star full.svg"; // Use a star icon or any icon you prefer
 
 const testimonials = [
   {
@@ -120,8 +120,8 @@ const OurCustomers = () => {
         {/* Testimonial Cards */}
         <div className="w-full max-w-7xl mx-auto">
           {/* First row */}
-          <div className="flex gap-8 justify-center mb-[-60px] z-10 relative">
-            {testimonials.slice(0, 3).map((t, idx) => (
+          <div className="flex gap-8 justify-center mb-[-20px] z-10 relative">
+            {testimonials.slice(0, 4).map((t, idx) => (
               <div
                 key={idx}
                 className="bg-[#fcf6e8] border border-[#e5e1d8] rounded-xl px-8 py-4 flex flex-col shadow-sm min-w-[480px] max-w-[520px] h-[180px]"
@@ -139,8 +139,8 @@ const OurCustomers = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-1">
+                    <img src={star} alt="star" className="w-4 h-4 " />
                     <span className="text-[#fbbf24] font-bold text-sm">{t.rating}</span>
-                    <img src={star} alt="star" className="w-4 h-4" />
                   </div>
                 </div>
                 <div className="text-[#212121] text-sm">{t.text}</div>
@@ -149,7 +149,7 @@ const OurCustomers = () => {
           </div>
           {/* Second row, slightly shifted down and right */}
           <div className="flex gap-8 justify-center mt-0 translate-y-10">
-            {testimonials.slice(3, 6).map((t, idx) => (
+            {testimonials.slice(0, 5).map((t, idx) => (
               <div
                 key={idx}
                 className="bg-[#fcf6e8] border border-[#e5e1d8] rounded-xl px-8 py-4 flex flex-col shadow-sm min-w-[480px] max-w-[520px] h-[180px]"
@@ -167,8 +167,8 @@ const OurCustomers = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-1">
-                    <span className="text-[#fbbf24] font-bold text-sm">{t.rating}</span>
                     <img src={star} alt="star" className="w-4 h-4" />
+                    <span className="text-[#fbbf24] font-bold text-sm">{t.rating}</span>
                   </div>
                 </div>
                 <div className="text-[#212121] text-sm">{t.text}</div>
