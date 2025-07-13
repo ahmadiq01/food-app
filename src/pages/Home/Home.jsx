@@ -38,7 +38,6 @@ const Home = () => {
         <OurFoods />
         <OurCustomers />
         <Connect />
-        <Footer />
       </div>
     </>
   );
