@@ -18,9 +18,55 @@ import LeftOrange from "../../assets/LeftOrange.svg";
 import Female from "../../assets/Female.svg";
 import { SocialIcon } from 'react-social-icons';
 import { FaFacebookMessenger } from 'react-icons/fa'; // From Font Awesome
+import { toast } from 'react-toastify';
+import { useState, useEffect } from 'react';
 
 
 const HeaderSection = () => {
+  // Cart count state for badge update
+  const [cartCount, setCartCount] = useState(0);
+
+  // Helper to get cart
+  const getCart = () => {
+    const cart = localStorage.getItem('cart');
+    return cart ? JSON.parse(cart) : [];
+  };
+
+  // Helper to set cart
+  const setCart = (cart) => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    window.dispatchEvent(new Event('cartUpdated'));
+  };
+
+  // Update cart count on mount and when cart changes
+  useEffect(() => {
+    const updateCartCount = () => {
+      const cart = getCart();
+      setCartCount(cart.reduce((sum, item) => sum + item.quantity, 0));
+    };
+    updateCartCount();
+    window.addEventListener('storage', updateCartCount);
+    window.addEventListener('cartUpdated', updateCartCount);
+    return () => {
+      window.removeEventListener('storage', updateCartCount);
+      window.removeEventListener('cartUpdated', updateCartCount);
+    };
+  }, []);
+
+  // Add to cart handler
+  const handleAddToCart = (product) => {
+    let cart = getCart();
+    const idx = cart.findIndex((item) => item.name === product.name);
+    if (idx > -1) {
+      cart[idx].quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+    setCart(cart);
+    setCartCount(cart.reduce((sum, item) => sum + item.quantity, 0));
+    toast.success('Product added successfully');
+  };
+
   return (
     <div>
       {/* Header Section */}
@@ -180,7 +226,12 @@ const HeaderSection = () => {
                   999 PKR
                 </span>
               </div>
-              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base">
+              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base cursor-pointer" onClick={() => handleAddToCart({
+                name: 'Royal Drink',
+                description: 'Now that there is the Tec-9, a crappy spray gun from South Miami.',
+                price: 999,
+                image: RB
+              })}>
                 Add to Cart
               </button>
             </div>
@@ -215,7 +266,12 @@ const HeaderSection = () => {
                   999 PKR
                 </span>
               </div>
-              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base">
+              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base cursor-pointer" onClick={() => handleAddToCart({
+                name: 'Royal Drink',
+                description: 'Now that there is the Tec-9, a crappy spray gun from South Miami.',
+                price: 999,
+                image: GB
+              })}>
                 Add to Cart
               </button>
             </div>
@@ -251,7 +307,12 @@ const HeaderSection = () => {
                   999 PKR
                 </span>
               </div>
-              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base shadow">
+              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base shadow cursor-pointer" onClick={() => handleAddToCart({
+                name: 'Royal Drink',
+                description: 'Now that there is the Tec-9, a crappy spray gun from South Miami.',
+                price: 999,
+                image: YB
+              })}>
                 Add to Cart
               </button>
             </div>

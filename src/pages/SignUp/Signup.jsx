@@ -42,20 +42,16 @@ const Signup = () => {
       if ((res.status === 200 || res.status === 201) && data.token) {
         // Save JWT to localStorage
         localStorage.setItem("token", data.token);
-  
-        // Debug logs
-        console.log("🔑 JWT Token received:", data.token);
-        console.log("📦 Token stored in localStorage:", localStorage.getItem("token"));
-        console.log(
-          "🧪 localStorage Match:",
-          localStorage.getItem("token") === data.token ? "✅ SUCCESS" : "❌ FAILED"
-        );
-  
+        localStorage.setItem("email", email);
+        // Sync cart to backend
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (cart.length > 0) {
+          axiosInstance.post('/cart/add', { email, cart })
+            .catch(() => {}); // Optionally handle error
+        }
         toast.success("Signup successful!");
-  
         // Redirect using full reload
         setTimeout(() => {
-          console.log("🚀 Redirecting to /orders...");
           window.location.href = "/orders";
         }, 500);
       } else {

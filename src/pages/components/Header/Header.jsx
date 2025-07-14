@@ -13,6 +13,7 @@ import { width } from "@fortawesome/free-brands-svg-icons/fa42Group";
 const Header = ({ 
   variant = "default", 
   bg_color,
+  cartCount = 0,
 }) => {
   const navigate = useNavigate();
   // Define styles based on variant
@@ -102,7 +103,7 @@ const Header = ({
           </form>
 
           
-          <button type="button" onClick={() => navigate('/login')}>
+          <button type="button" onClick={() => navigate('/login')} style={{ cursor: 'pointer' }}>
             {variant === 'home' ? (
               <svg
                 className={`w-10 h-10 p-1 rounded-full `}
@@ -120,21 +121,36 @@ const Header = ({
                 src={User}
                 alt="User"
                 className="w-12 h-20 p-1 rounded-full"
+                style={{ cursor: 'pointer' }}
               />
             )}
           </button>
 
-
-          
           {/* Cart Icon */}
           <button
             type="button"
-            onClick={() => navigate('/orders')}
+            onClick={() => navigate('/login')}
+            style={{ position: 'relative', cursor: 'pointer' }}
           >
             {variant === 'home' ? (
               <img src={HomeCart} alt="Cart" className="w-[40px] h-[40px]" />
             ) : (
               <img src={Cart} alt="Cart" className="w-[40px] h-[40px]" />
+            )}
+            {cartCount > 0 && (
+              <span style={{
+                position: 'absolute',
+                top: '-8px',
+                right: '-8px',
+                background: '#e3262b',
+                color: 'white',
+                borderRadius: '50%',
+                padding: '2px 7px',
+                fontSize: '12px',
+                fontWeight: 'bold',
+                zIndex: 20,
+                border: '2px solid white',
+              }}>{cartCount}</span>
             )}
           </button>
         </div>

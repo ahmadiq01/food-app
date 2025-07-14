@@ -11,7 +11,7 @@ const OurFoods = () => {
       {/* Background SVG */}
       <img
         src={CircularArrow}
-        className="w-[1900px]  rotate-[-8.47deg] h-[1822px] absolute mb-[500px] mr-[120px] z-0"
+        className="w-full  rotate-[0.53deg] absolute mb-[500px]  z-0"
         alt="Background Curve"
         style={{ pointerEvents: 'none' }}
       />
@@ -66,10 +66,10 @@ const OurFoods = () => {
       </div>
       
       {/* Fruits Image - Fixed pixel dimensions */}
-      <div className="relative z-10 flex justify-center items-center w-full">
+      <div className="relative z-10 flex justify-center  items-center w-full ">
         <img
           src={Fruits}
-          className="w-[920px] h-[582px] object-cover"
+          className="w-[920px] h-[582px] object-cover  "
           alt="Fruits"
         />
       </div>

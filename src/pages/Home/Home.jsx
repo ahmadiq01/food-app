@@ -1,5 +1,5 @@
 // Home.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header/Header";
 import GroupSvg from "../../assets/Group.svg";
 import SubHeadingSvg from "../../assets/Sub Heading.svg";
@@ -12,12 +12,29 @@ import OurCustomers from "./OurCustomers";
 import Footer from "../components/Footer/Footer";
 
 const Home = () => {
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const updateCartCount = () => {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      setCartCount(cart.reduce((sum, item) => sum + item.quantity, 0));
+    };
+    updateCartCount();
+    window.addEventListener('cartUpdated', updateCartCount);
+    window.addEventListener('storage', updateCartCount);
+    return () => {
+      window.removeEventListener('cartUpdated', updateCartCount);
+      window.removeEventListener('storage', updateCartCount);
+    };
+  }, []);
+
   return (
     <>
       <div className="bg-[#a31d1d]">
         <Header 
           variant="home"
           bg_color="bg-[#a31d1d]"
+          cartCount={cartCount}
           containerWidth="w-full" // Container width
           maxWidth="max-w-7xl" // Maximum width
           innerWidth="w-full" // Inner content width

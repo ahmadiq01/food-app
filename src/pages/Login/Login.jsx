@@ -22,6 +22,13 @@ const Login = () => {
       const data = res.data;
       if (res.status === 200 && data.token) {
         localStorage.setItem('token', data.token);
+        localStorage.setItem('email', email);
+        // Sync cart to backend
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (cart.length > 0) {
+          axiosInstance.post('/cart/add', { email, cart })
+            .catch(() => {}); // Optionally handle error
+        }
         toast.success('Login successful!');
         navigate('/orders');
       } else {
