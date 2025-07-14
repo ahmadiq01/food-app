@@ -57,7 +57,8 @@ const HeaderSection = () => {
   // Add to cart handler
   const handleAddToCart = (product) => {
     let cart = getCart();
-    const idx = cart.findIndex((item) => item.name === product.name);
+    // Use _id for uniqueness, and store the product in the same structure as received from API
+    const idx = cart.findIndex((item) => item._id === product._id);
     if (idx > -1) {
       cart[idx].quantity += 1;
     } else {
@@ -258,12 +259,7 @@ const HeaderSection = () => {
                 </div>
                 <button
                   className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base shadow cursor-pointer"
-                  onClick={() => handleAddToCart({
-                    name: product.name,
-                    description: product.description,
-                    price: product.price,
-                    image: assetMap[product.img],
-                  })}
+                  onClick={() => handleAddToCart(product)}
                 >
                   Add to Cart
                 </button>
