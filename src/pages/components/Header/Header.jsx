@@ -1,5 +1,5 @@
 // Header.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Logo1 from "../../../assets/logo 1.svg";
 import HomeLogo from "../../../assets/home-logo.svg";
 import Group from '../../../assets/Group.svg';
@@ -12,9 +12,22 @@ import { width } from "@fortawesome/free-brands-svg-icons/fa42Group";
 
 const Header = ({ 
   variant = "default", 
-  bg_color,
-  cartCount = 0,
+  bg_color
 }) => {
+  const [cartCount, setCartCount] = useState(0);
+  useEffect(() => {
+    const updateCartCount = () => {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      setCartCount(cart.reduce((sum, item) => sum + item.quantity, 0));
+    };
+    updateCartCount();
+    window.addEventListener('cartUpdated', updateCartCount);
+    window.addEventListener('storage', updateCartCount);
+    return () => {
+      window.removeEventListener('cartUpdated', updateCartCount);
+      window.removeEventListener('storage', updateCartCount);
+    };
+  }, []);
   const navigate = useNavigate();
   // Define styles based on variant
   const getStyles = () => {
