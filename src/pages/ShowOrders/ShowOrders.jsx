@@ -20,6 +20,22 @@ console.log("set cart item on the order page", cartItems);
   const deliveryFee = 200;
   const subtotal = itemsTotal + deliveryFee;
 
+  const handleQuantityChange = (id, delta) => {
+    setCartItems((items) =>
+      items.map((item) =>
+        item._id === id
+          ? { ...item, quantity: Math.max(1, (item.quantity || 1) + delta) }
+          : item
+      )
+    );
+    // Optionally, update backend/localStorage here
+  };
+
+  const handleRemove = (id) => {
+    setCartItems((items) => items.filter((item) => item._id !== id));
+    // Optionally, update backend/localStorage here
+  };
+
   return (
     <div className="min-h-screen bg-[#f8f2de] font-[Poppins]">
       <Header />
@@ -41,7 +57,26 @@ console.log("set cart item on the order page", cartItems);
                       </div>
                     </div>
                   </div>
-                  <div className="font-medium text-[17px] min-w-[100px] text-center">{((item.price || 0) * (item.quantity || 1)).toFixed(2)} PKR</div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center bg-[#f3f3f3] rounded-full px-1 py-1 w-[96px] h-[40px]">
+                      <button
+                        onClick={() => handleQuantityChange(item._id, -1)}
+                        className="w-8 h-8 rounded-full bg-white border border-[#e0d6c3] flex items-center justify-center text-lg text-[#212121] cursor-pointer"
+                      >-</button>
+                      <span className="flex-1 text-center text-[18px] font-medium">{item.quantity}</span>
+                      <button
+                        onClick={() => handleQuantityChange(item._id, 1)}
+                        className="w-8 h-8 rounded-full bg-[#212121] flex items-center justify-center text-lg text-white cursor-pointer"
+                      >+</button>
+                    </div>
+                    <button
+                      onClick={() => handleRemove(item._id)}
+                      className="text-[#e3262b] text-[13px] ml-2 cursor-pointer"
+                    >Remove</button>
+                    <div className="font-medium text-[17px] min-w-[100px] text-center">
+                      {((item.price || 0) * (item.quantity || 1)).toFixed(2)} PKR
+                    </div>
+                  </div>
                 </div>
               ))}
               {cartItems.length === 0 && (
