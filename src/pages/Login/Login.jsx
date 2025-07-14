@@ -12,6 +12,21 @@ const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
+  // Function to transform cart data to match API format
+  const transformCartData = (cart) => {
+    const items = cart.map(item => ({
+      email: localStorage.getItem('email'), // or the email from form
+      productId: item._id, // MongoDB ObjectId
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      img: `/src/assets/${item.img}.svg`, // Convert img code to full path
+      shadowImg: `/src/assets/${item.shadowImg}.svg` // Convert shadowImg code to full path
+    }));
+    
+    return { items };
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -23,11 +38,26 @@ const Login = () => {
       if (res.status === 200 && data.token) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('email', email);
-        // Sync cart to backend
+        
+        // Sync cart to backend (POST local cart to /api/cart/)
         const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        console.log('Original cart:', cart);
+        
         if (cart.length > 0) {
-          axiosInstance.post('/cart/add', { email, cart })
-            .catch(() => {}); // Optionally handle error
+          // Transform cart data to match API format
+          const transformedCart = transformCartData(cart);
+          console.log('Transformed cart:', transformedCart);
+          
+          axiosInstance.post('http://localhost:5000/api/cart/', transformedCart)
+            .then((cartRes) => {
+              if (cartRes.data && cartRes.data.cart) {
+                localStorage.setItem('cart', JSON.stringify(cartRes.data.cart));
+                window.dispatchEvent(new Event('cartUpdated'));
+              }
+            })
+            .catch((err) => {
+              console.error('Cart sync error:', err);
+            });
         }
         toast.success('Login successful!');
         navigate('/orders');
