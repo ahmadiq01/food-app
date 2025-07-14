@@ -20,6 +20,7 @@ import { SocialIcon } from 'react-social-icons';
 import { FaFacebookMessenger } from 'react-icons/fa'; // From Font Awesome
 import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
+import axiosInstance from '../../api/axios';
 
 
 const HeaderSection = () => {
@@ -65,6 +66,27 @@ const HeaderSection = () => {
     setCart(cart);
     setCartCount(cart.reduce((sum, item) => sum + item.quantity, 0));
     toast.success('Product added successfully');
+  };
+
+  // Product state
+  const [products, setProducts] = useState([]);
+  // Fetch products from API
+  useEffect(() => {
+    axiosInstance.get('/products/all')
+      .then(res => {
+        setProducts(res.data.products || []);
+      })
+      .catch(() => setProducts([]));
+  }, []);
+
+  // Asset mapping for product and shadow images
+  const assetMap = {
+    RB,
+    GB,
+    YB,
+    RedShadow,
+    GreenShadow,
+    YellowShadow,
   };
 
   return (
@@ -196,130 +218,60 @@ const HeaderSection = () => {
       <img src={LeftOrange} alt="Left Orange" className="absolute left-0 bottom-0 w-[180px] h-auto z-0" style={{ pointerEvents: 'none' }} />
       <div className="flex items-center justify-center w-full mt-18">
         <div className="bg-white flex flex-row rounded-xl relative w-[80%] px-8 py-6 gap-6">
-          {/* Bottle 1 */}
-          <div className="flex flex-row  mr-[0px] rounded-xl p-6 flex-1 min-w-[320px] relative">
-            {/* Shadow Overlay */}
-            <img
-              src={RedShadow}
-              alt="Red Shadow"
-              className="absolute -left-8 top-1/2 -translate-y-1/2 w-40 h-40 z-0"
-              style={{ pointerEvents: "none" }}
-            />
-            <img
-              src={RB}
-              alt="Royal Drink Red"
-              className="h-60 w-auto relative z-10"
-            />
-            <div className="flex flex-col justify-center flex-1 relative z-10  ml-[40px] w-[80%] bg-white/90 rounded-xl py-2 px-4">
-              <div className="font-black text-2xl tracking-wider text-[#1A1A1A] mb-1">
-                Royal Drink
+          {/* Render all products dynamically in a single parent div, keeping the original layout for 3 products */}
+          {products.slice(0, 3).map((product, idx) => (
+            <div
+              key={product._id || idx}
+              className={`flex flex-row rounded-xl p-6 flex-1 min-w-[320px] relative
+                ${idx === 0 ? 'mr-[0px]' : ''}
+                ${idx === 1 ? 'ml-[30px]' : ''}
+                ${idx === 2 ? 'mr-[-50px]' : ''}
+              `}
+              style={{ minWidth: 320, flexBasis: 0 }}
+            >
+              {/* Shadow Overlay */}
+              <img
+                src={assetMap[product.shadowImg]}
+                alt={product.shadowImg}
+                className="absolute -left-8 top-1/2 -translate-y-1/2 w-40 h-40 z-0"
+                style={{ pointerEvents: 'none' }}
+              />
+              <img
+                src={assetMap[product.img]}
+                alt={product.name}
+                className="h-60 w-auto relative z-10"
+              />
+              <div className="flex flex-col justify-center flex-1 relative z-10  ml-[40px] w-[80%] bg-white/90 rounded-xl py-2 px-4">
+                <div className="font-black text-2xl tracking-wider text-[#1A1A1A] mb-1">
+                  {product.name}
+                </div>
+                <div className="text-sm w-[62%] text-[#1A1A1A] mb-2">
+                  {product.description}
+                </div>
+                <div className={`mb-2 ${idx === 2 ? 'mr-[10px]' : 'mr-[20px]'}`}>
+                  <span className="line-through text-[#909090] mr-2">
+                    {product.oldPrice} PKR
+                  </span>
+                  <span className="font-bold text-black text-lg">
+                    {product.price} PKR
+                  </span>
+                </div>
+                <button
+                  className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base shadow cursor-pointer"
+                  onClick={() => handleAddToCart({
+                    name: product.name,
+                    description: product.description,
+                    price: product.price,
+                    image: assetMap[product.img],
+                  })}
+                >
+                  Add to Cart
+                </button>
               </div>
-              <div className="text-sm w-[62%] text-[#1A1A1A] mb-2">
-                Now that there is the Tec-9, a crappy spray gun from South
-                Miami.
-              </div>
-              <div className="mb-2 mr-[20px]">
-                <span className="line-through text-[#909090] mr-2">
-                  1500 PKR
-                </span>
-                <span className="font-bold text-black text-lg">
-                  999 PKR
-                </span>
-              </div>
-              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base cursor-pointer" onClick={() => handleAddToCart({
-                name: 'Royal Drink',
-                description: 'Now that there is the Tec-9, a crappy spray gun from South Miami.',
-                price: 999,
-                image: RB
-              })}>
-                Add to Cart
-              </button>
             </div>
-          </div>
-          {/* Bottle 2 */}
-          <div className="flex flex-row rounded-xl  ml-[30px] p-6 flex-1 min-w-[320px] relative">
-            {/* Shadow Overlay */}
-            <img
-              src={GreenShadow}
-              alt="Green Shadow"
-              className="absolute -left-8 top-1/2 -translate-y-1/2 w-40 h-40 z-0"
-              style={{ pointerEvents: "none" }}
-            />
-            <img
-              src={GB}
-              alt="Royal Drink Green"
-              className="h-60 w-auto relative z-10"
-            />
-            <div className="flex flex-col justify-center flex-1 relative z-10  ml-[40px] w-[80%] bg-white/90 rounded-xl py-2 px-4">
-              <div className="font-black text-2xl tracking-wider text-[#1A1A1A] mb-1">
-                Royal Drink
-              </div>
-              <div className="text-sm w-[62%] text-[#1A1A1A] mb-2">
-                Now that there is the Tec-9, a crappy spray gun from South
-                Miami.
-              </div>
-              <div className="mb-2 mr-[20px]">
-                <span className="line-through text-[#909090] mr-2">
-                  1500 PKR
-                </span>
-                <span className="font-bold text-black text-lg">
-                  999 PKR
-                </span>
-              </div>
-              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base cursor-pointer" onClick={() => handleAddToCart({
-                name: 'Royal Drink',
-                description: 'Now that there is the Tec-9, a crappy spray gun from South Miami.',
-                price: 999,
-                image: GB
-              })}>
-                Add to Cart
-              </button>
-            </div>
-          </div>
-
-          {/* Bottle 3 */}
-          <div className="flex flex-row rounded-xl mr-[-50px]  p-6 flex-1 min-w-[320px] relative">
-            {/* Shadow Overlay */}
-            <img
-              src={YellowShadow}
-              alt="Yellow Shadow"
-              className="absolute -left-8 top-1/2 -translate-y-1/2 w-40 h-40 z-0"
-              style={{ pointerEvents: "none" }}
-            />
-            <img
-              src={YB}
-              alt="Royal Drink Yellow"
-              className="h-60 w-auto relative z-10"
-            />
-            <div className="flex flex-col justify-center flex-1 relative z-10  ml-[40px] w-[80%] bg-white/90 rounded-xl py-2 px-4">
-              <div className="font-black text-2xl tracking-wider text-[#1A1A1A] mb-1">
-                Royal Drink
-              </div>
-              <div className="text-sm w-[62%] text-[#1A1A1A] mb-2">
-                Now that there is the Tec-9, a crappy spray gun from South
-                Miami.
-              </div>
-              <div className="mb-2 mr-[10px]">
-                <span className="line-through text-[#909090] mr-2">
-                  1500 PKR
-                </span>
-                <span className="font-bold text-black text-lg">
-                  999 PKR
-                </span>
-              </div>
-              <button className="bg-[#a31d1d] text-white rounded-full w-[60%] mr-[20px] py-2 font-semibold text-base shadow cursor-pointer" onClick={() => handleAddToCart({
-                name: 'Royal Drink',
-                description: 'Now that there is the Tec-9, a crappy spray gun from South Miami.',
-                price: 999,
-                image: YB
-              })}>
-                Add to Cart
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-
       {/* bottle section ends here */}
     </div>
   );
